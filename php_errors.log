@@ -1,0 +1,2 @@
+[15-Jul-2017 07:52:48 UTC] PHP Fatal error:  Class 'App\Http\Controllers\controller\Controller' not found in /home/ubuntu/workspace/app/Http/Controllers/PostsController.php on line 7
+[15-Jul-2017 07:53:13 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller\Controller' not found in /home/ubuntu/workspace/app/Http/Controllers/PostsController.php on line 7

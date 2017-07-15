@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\controller;
+namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -39,6 +39,13 @@ class PostsController extends Controller
         
         return response()->json($post);
         
+    }
+    
+    public function showPost($id)
+    {
+         $post = Post::find($id);
+         
+       return response()->json($post);
     }
     
     public function deletePost($id)
