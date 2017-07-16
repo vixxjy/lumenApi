@@ -18,14 +18,36 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' => 'api/v1'], function($app)
 {
-    $app->get('posts/index', 'PostsController@index');
+   
     
-    $app->post('posts/add', 'PostsController@createPost');
+    $app->group(['prefix' => 'posts', 'middleware' => 'auth'], function($app)
+    {
+        $app->get('index', 'PostsController@index');
     
-    $app->get('posts/view/{id}', 'PostsController@showPost');
+        $app->post('add', 'PostsController@createPost');
+        
+        $app->get('view/{id}', 'PostsController@showPost');
+        
+        $app->put('edit/{id}', 'PostsController@updatePost');
+        
+        $app->delete('delete/{id}', 'PostsController@deletePost');
     
-    $app->put('posts/edit/{id}', 'PostsController@updatePost');
+    });
     
-    $app->delete('posts/delete/{id}', 'PostsController@deletePost');
+    
+    $app->group(['prefix' => 'users'], function($app)
+    {
+        $app->post('add', 'UserController@add');
+        
+        $app->get('view/{id}', 'UserController@viewPost');
+        
+        $app->put('edit/{id}', 'UserController@editPost');
+        
+        $app->get('index', 'UserController@index');
+        
+         $app->delete('delete/{id}', 'UserController@deletePost');
+        
+    });
     
 });
+
